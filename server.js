@@ -13,7 +13,7 @@ app.get('/users', (req, res) => {
 
 app.post('/users', async (req, res) => {
     try {
-        //const salt = await bcrypt.genSalt() default == 10이라서 hash()에 한번에 적을 수 있음
+        //const salt = await bcrypt.genSalt() default == 10이라서 bycript.hash()에 한번에 적을 수 있음
         const hashedPassword = await bcrypt.hash(req.body.password, 10) //password 암호화해서 DB에 저장: salt는 비밀번호 같은 사람도 다르게 저장하기 위해서 -> 보안 훨씬 강화됨 
         const user = {name: req.body.name, password: hashedPassword}
         users.push(user)
